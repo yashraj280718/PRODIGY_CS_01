@@ -1,187 +1,240 @@
-# Image Encryption Tool
+Caesar Cipher Tool
+A modern, user-friendly desktop application for encrypting and decrypting text using the classic Caesar cipher algorithm. Built with Python and Tkinter, this tool provides an intuitive graphical interface for learning and applying cryptographic concepts.
 
-A powerful desktop application for encrypting and decrypting images using multiple algorithms. Built with Python, Tkinter, and PIL, this tool provides an intuitive graphical interface for secure image processing.
+✨ Features
+Clean, intuitive GUI with responsive design
+Encrypt and decrypt text using Caesar cipher algorithm
+Adjustable shift values (1-25) with spinbox control
+Flexible text options:
+Preserve letter case (uppercase/lowercase)
+Preserve spaces and punctuation
+Multi-line text support for longer messages
+One-click copy result to clipboard
+Clear all function for quick reset
+Real-time processing with immediate results
+Error handling with user-friendly warnings
 
-## ✨ Features
+🖼️ Interface
+The application features a clean, organized layout with:
+Text input area for messages
+Shift value selector (1-25)
+Customizable options (case preservation, space/punctuation handling)
+Action buttons (Encrypt, Decrypt, Clear All)
+Results display area
+Copy to clipboard functionality
+Built-in instructions
 
-- **User-friendly GUI** with side-by-side image preview
-- **Four encryption algorithms**:
-  - **XOR Encryption** - Bitwise XOR operations with key-generated sequences
-  - **Pixel Swap** - Deterministic pixel position shuffling
-  - **Mathematical** - Modular arithmetic operations with multiplicative inverses
-  - **Color Channel Shift** - RGB channel value shifting
-- **Supports multiple formats**: JPG, JPEG, PNG, BMP, TIFF
-- **Custom encryption keys** for personalized security
-- **Real-time preview** of original and processed images
-- **Save functionality** for encrypted/decrypted results
-- **Reset option** to clear all images and start fresh
+🚀 Installation
+Prerequisites
+Python 3.7 or higher
+Tkinter (usually included with Python)
 
-## 🖼️ Screenshot
+Setup
+Clone the repository
+bash
+git clone https://github.com/yourusername/caesar-cipher-tool.git
+cd caesar-cipher-tool
+Run the application
 
-The application features a clean, organized interface with:
-- File selection panel
-- Encryption method dropdown
-- Key input field
-- Control buttons (Encrypt, Decrypt, Save, Reset)
-- Side-by-side image display
-- Status bar for operation feedback
+bash
+python caesar_cipher_gui.py
+No additional dependencies required - uses only Python standard library!
 
-## 🚀 Installation
+🎯 Usage
+Quick Start Guide
+Launch the application
 
-### Prerequisites
+bash
+python caesar_cipher_gui.py
+Enter your message
 
-Make sure you have Python 3.7+ installed on your system.
+Type or paste text in the input area
 
-### Required Dependencies
+Supports multi-line messages
 
-Install the required packages using pip:
+Set shift value
 
-```bash
-pip install pillow numpy
-```
+Use the spinbox to select shift (1-25)
 
-Or install from requirements.txt (if available):
+Default is 3 (classic Caesar cipher)
 
-```bash
-pip install -r requirements.txt
-```
+Choose options
 
-### Clone the Repository
+✅ Preserve letter case: Maintains uppercase/lowercase
 
-```bash
-git clone https://github.com/yourusername/image-encryption-tool.git
-cd image-encryption-tool
-```
+✅ Preserve spaces and punctuation: Keeps non-alphabetic characters
 
-## 🎯 Usage
+Process your text
 
-### Running the Application
+Click Encrypt to encode your message
 
-```bash
-python image_encryption_tool.py
-```
+Click Decrypt to decode encrypted text
 
-### Step-by-Step Guide
+Use the same shift value for both operations
 
-1. **Load an Image**
-   - Click "Select Image" button
-   - Choose your image file from the file dialog
-   - The original image will appear in the left panel
+Copy results
 
-2. **Choose Encryption Method**
-   - Select from the dropdown menu:
-     - XOR (default)
-     - Pixel Swap
-     - Mathematical
-     - Color Channel Shift
+Click Copy Result to copy output to clipboard
 
-3. **Set Encryption Key**
-   - Enter your custom key in the text field
-   - Default key is "12345"
-   - Use the same key for decryption
+Use Clear All to reset everything
 
-4. **Encrypt the Image**
-   - Click "Encrypt Image" button
-   - Encrypted result appears in the right panel
+Example Usage
+Original Text: Hello World! How are you?
+Shift Value: 3
+Encrypted: Khoor Zruog! Krz duh brx?
+Decrypted: Hello World! How are you?
 
-5. **Decrypt the Image**
-   - Click "Decrypt Image" button (with the same key)
-   - Decrypted result replaces the processed image
+🔐 Caesar Cipher Algorithm
+The Caesar cipher is one of the oldest known encryption techniques:
 
-6. **Save Results**
-   - Click "Save Result" to export the processed image
-   - Choose location and format (PNG/JPG)
+Encryption: Each letter is shifted forward by a fixed number of positions in the alphabet
 
-7. **Reset**
-   - Click "Reset" to clear all images and start over
+Decryption: Each letter is shifted backward by the same number of positions
 
-## 🔐 Encryption Algorithms
+Wrap-around: Z + 1 becomes A, A - 1 becomes Z
 
-### XOR Encryption
-- Uses bitwise XOR operations with a deterministic key sequence
-- Symmetric algorithm (same process for encryption/decryption)
-- Fast and simple implementation
+Non-alphabetic preservation: Spaces, numbers, and punctuation can be preserved
 
-### Pixel Swap
-- Rearranges pixel positions based on key-generated shuffle sequence
-- Maintains image data integrity while scrambling appearance
-- Reversible with the correct key
+Mathematical Formula
+Encryption: E(x) = (x + shift) mod 26
 
-### Mathematical
-- Applies modular arithmetic operations (multiplication and addition)
-- Uses modular multiplicative inverse for decryption
-- Ensures mathematical reversibility
+Decryption: D(x) = (x - shift) mod 26
 
-### Color Channel Shift
-- Shifts RGB channel values by key-derived amounts
-- Preserves image structure while altering colors
-- Lightweight and efficient
+Where x is the letter's position (A=0, B=1, ..., Z=25)
 
-## 📁 Project Structure
-
-```
-image-encryption-tool/
+📁 Project Structure
+text
+caesar-cipher-tool/
 │
-├── image_encryption_tool.py    # Main application file
-├── README.md                   # This file
-├── requirements.txt            # Python dependencies (optional)
-└── examples/                   # Sample images (optional)
-    ├── sample1.jpg
-    └── sample2.png
-```
+├── caesar_cipher_gui.py       # Main application file
+├── README.md                  # This file
+└── examples/                  # Example texts (optional)
+    ├── sample_text.txt
+    └── encrypted_message.txt
+🛠️ Technical Implementation
+Key Components
+GUI Framework: Tkinter with ttk for modern styling
 
-## 🛠️ Technical Details
+Text Processing: String manipulation with modular arithmetic
 
-### Dependencies
-- **tkinter**: GUI framework (built into Python)
-- **PIL (Pillow)**: Image processing library
-- **numpy**: Numerical operations and array manipulation
-- **random**: Pseudorandom number generation for key sequences
+Event Handling: Button commands and text validation
 
-### Key Features Implementation
-- **Deterministic key generation**: Uses hash() function for reproducible results
-- **Image scaling**: Automatic resizing to fit display canvases
-- **Error handling**: Comprehensive try-catch blocks with user-friendly messages
-- **Memory management**: Proper image reference handling to prevent memory leaks
+Clipboard Integration: Built-in copy functionality
 
-## ⚠️ Security Notes
+Responsive Design: Grid layout with proper weight distribution
 
-- This tool is designed for **educational and demonstration purposes**
-- The encryption methods provided are **not cryptographically secure** for sensitive data
-- For production security needs, use established cryptographic libraries
-- Always keep your encryption keys secure and private
+Code Highlights
+python
+def caesar_cipher(self, text, shift, decrypt=False):
+    """Core encryption/decryption logic"""
+    if decrypt:
+        shift = -shift
+    
+    result = ""
+    for char in text:
+        if char.isalpha():
+            # Shift character with wrap-around
+            shifted = chr((ord(char.lower()) - ord('a') + shift) % 26 + ord('a'))
+            result += shifted.upper() if char.isupper() else shifted
+    return result
+🎓 Educational Value
+This tool is perfect for:
 
-## 🤝 Contributing
+Learning cryptography basics
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+Understanding classical ciphers
 
-### Development Setup
+Python GUI development practice
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Algorithm implementation
 
-## 📝 License
+Security awareness training
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+⚠️ Security Notes
+Caesar cipher is not secure for real-world applications
 
-## 🐛 Known Issues
+Easily broken with frequency analysis or brute force (only 25 possible keys)
 
-- Large images may take longer to process
-- Some image formats might require conversion to RGB
-- Application window is resizable but images maintain aspect ratio
+Use for educational purposes and basic obfuscation only
 
-## 🔮 Future Enhancements
+For actual security needs, use modern cryptographic methods
 
-- [ ] Additional encryption algorithms (AES, DES)
-- [ ] Batch processing for multiple images
-- [ ] Password strength indicator
-- [ ] Image compression options
-- [ ] Drag-and-drop file support
-- [ ] Dark mode theme
-- [ ] Progress bar for large files
-- Python Software Foundation for the excellent Tkinter GUI toolkit
-- PIL/Pillow team for robust image processing capabilities
-- NumPy developers for efficient numerical computing tools
+🔮 Future Enhancements
+ Multiple cipher algorithms (Vigenère, Atbash, ROT13)
+
+ File encryption/decryption support
+
+ Frequency analysis tool for cipher breaking
+
+ Brute force attack demonstration
+
+ Custom alphabet support
+
+ Batch processing for multiple messages
+
+ Export/import functionality
+
+ Dark mode theme
+
+🤝 Contributing
+Contributions are welcome! Here's how you can help:
+
+Fork the repository
+
+Create a feature branch (git checkout -b feature/AmazingFeature)
+
+Commit your changes (git commit -m 'Add some AmazingFeature')
+
+Push to the branch (git push origin feature/AmazingFeature)
+
+Open a Pull Request
+
+Development Ideas
+Add more classical ciphers
+
+Implement cipher-breaking tools
+
+Enhance UI/UX design
+
+Add internationalization support
+
+Create unit tests
+
+Add command-line interface
+
+📝 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+🐛 Known Issues
+Very long texts may cause minor performance delays
+
+Spinbox validation could be improved
+
+Window resizing behavior on some systems
+
+📞 Support
+If you encounter any issues or have questions:
+
+Check the Issues page
+
+Create a new issue with detailed description
+
+Include error messages and system information
+
+👨‍💻 Author
+Your Name
+
+GitHub: @yourusername
+
+LinkedIn: Your LinkedIn Profile
+
+Email: your.email@example.com
+
+🙏 Acknowledgments
+Julius Caesar for the original cipher concept (50 BCE)
+
+Python Software Foundation for Tkinter
+
+The cryptography community for educational resources
+
+Open source contributors and educators
